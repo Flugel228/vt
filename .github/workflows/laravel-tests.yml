@@ -17,8 +17,8 @@ jobs:
     - name: Modify .env file
       run: |
         sed -i 's/DB_HOST=127.0.0.1/DB_HOST=db/' .env
-        sed -i 's/DB_DATABASE=swc/DB_DATABASE=swc_db/' .env
-        sed -i 's/DB_PASSWORD=/DB_DATABASE=root/' .env
+        sed -i 's/DB_DATABASE=vt/DB_DATABASE=vt_db/' .env
+        sed -i 's/DB_PASSWORD=/DB_PASSWORD=root/' .env
     - name: Set up Docker
       run: docker --version
     - name: Build Docker Image
@@ -26,7 +26,7 @@ jobs:
     - name: Start project
       run: make start
     - name: Execute project
-      run: docker exec swc_app bash
+      run: docker exec vt_app bash
     - name: Execute composer install
       run: composer install
     - name: Generate key
