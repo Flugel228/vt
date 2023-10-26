@@ -5,7 +5,7 @@ start:
 	docker-compose up -d
 
 exec:
-	docker exec -it swc_app bash
+	docker exec -it vt_app bash
 
 stop:
 	docker-compose down

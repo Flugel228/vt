@@ -29,5 +29,8 @@ RUN apt-get install -y nodejs
 # Install nano
 RUN apt-get install -y nano
 
+# Install xdebug
+RUN pecl install xdebug-3.2.2 && docker-php-ext-enable xdebug
+COPY _docker/app/xdebug.ini $PHP_INI_DIR/conf.d/
 
 WORKDIR /var/www
