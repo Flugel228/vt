@@ -1,0 +1,36 @@
+<div
+  *ngIf="rightSidebarThemeService.isVisible | async"
+  (click)="rightSidebarThemeService.close()"
+  class="bg-black/50 fixed top-0 right-0 bottom-0 left-0 z-50"
+></div>
+<div
+  *ngIf="rightSidebarThemeService.isVisible | async"
+  class="bg-gray-100 fixed right-3 rounded-lg z-50 flex flex-col shadow-2xl"
+>
+  <div class="flex my-1 pl-3 pr-40 pt-2 pb-1">
+    <ul class="flex flex-col ml-2 text-lg font-normal">
+      <li>
+        <fa-icon
+          (click)="rightSidebarThemeService.back()"
+          class="cursor-pointer"
+          [icon]="faArrowLeft"
+        />
+        <span class="ml-2">Тема</span>
+      </li>
+    </ul>
+  </div>
+  <hr class="[height:_0.5px] my-1 bg-gray-200 border-0 dark:bg-gray-700/30"/>
+  <ul class="flex-col pt-1 pb-2">
+    <li class="flex py-1 pr-4 w-full items-center hover:bg-gray-300/40 cursor-pointer">
+      <div class="ml-4 flex items-center pb-0.5 w-full">
+        <fa-icon [icon]="faCheck"></fa-icon>
+        <span class="ml-3">Светлая</span>
+      </div>
+    </li>
+    <li class="flex py-1 pr-4 w-full items-center hover:bg-gray-300/40 cursor-pointer">
+      <div class="ml-4 flex items-center pb-0.5 w-full">
+        <span class="ml-7">Темная</span>
+      </div>
+    </li>
+  </ul>
+</div>
