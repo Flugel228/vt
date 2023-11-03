@@ -1,0 +1,56 @@
+<nav class="container mx-auto mt-6">
+  <ul class="flex flex-row">
+    <li
+      class="mr-4 font-semibold cursor-pointer"
+      [ngClass]="{
+        'border': isCurrentPage('channel'),
+        'border-0': isCurrentPage('channel'),
+        'border-b-2': isCurrentPage('channel'),
+        'border-black': isCurrentPage('channel'),
+        'hover:border-0': !isCurrentPage('channel'),
+        'hover:border-b-2': !isCurrentPage('channel'),
+        'hover:border-black': !isCurrentPage('channel'),
+        'opacity-50': !isCurrentPage('channel')
+      }"
+    ><a [routerLink]="['/channel']">Главная</a></li>
+    <li
+      class="mr-4 font-semibold cursor-pointer"
+      [ngClass]="{
+        'border': isCurrentPage('channel/videos'),
+        'border-0': isCurrentPage('channel/videos'),
+        'border-b-2': isCurrentPage('channel/videos'),
+        'border-black': isCurrentPage('channel/videos'),
+        'hover:border-0': !isCurrentPage('channel/videos'),
+        'hover:border-b-2': !isCurrentPage('channel/videos'),
+        'hover:border-black': !isCurrentPage('channel/videos'),
+        'opacity-50': !isCurrentPage('channel/videos')
+      }"
+    ><a [routerLink]="['/channel/videos']">Видео</a></li>
+    <li
+      class="mr-4 font-semibold cursor-pointer"
+      [ngClass]="{
+        'border': isCurrentPage('/channel/playlists'),
+        'border-0': isCurrentPage('/channel/playlists'),
+        'border-b-2': isCurrentPage('/channel/playlists'),
+        'border-black': isCurrentPage('/channel/playlists'),
+        'hover:border-0': !isCurrentPage('/channel/playlists'),
+        'hover:border-b-2': !isCurrentPage('/channel/playlists'),
+        'hover:border-black': !isCurrentPage('/channel/playlists'),
+        'opacity-50': !isCurrentPage('channel/playlists')
+      }"
+    ><a [routerLink]="['/channel/playlists']">Плейлисты</a></li>
+    <li
+      class="mr-4 font-semibold cursor-pointer"
+      [ngClass]="{
+        'border': isCurrentPage('channel/about'),
+        'border-0': isCurrentPage('channel/about'),
+        'border-b-2': isCurrentPage('channel/about'),
+        'border-black': isCurrentPage('channel/about'),
+        'hover:border-0': !isCurrentPage('channel/about'),
+        'hover:border-b-2': !isCurrentPage('channel/about'),
+        'hover:border-black': !isCurrentPage('channel/about'),
+        'opacity-50': !isCurrentPage('channel/about')
+      }"
+    ><a [routerLink]="['/channel/about']">О канале</a></li>
+  </ul>
+</nav>

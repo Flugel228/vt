@@ -1,0 +1,33 @@
+<nav class="bg-white p-4 fixed w-full z-10 top-0">
+  <div class="container-xl mx-auto justify-between flex items-center">
+    <div class="flex justify-start ml-2 mr-4 items-center">
+      <button
+        (click)="sidebarService.open()"
+        class="text-dark text-2xl"
+      >
+        &#9776;
+      </button>
+      <img
+        class="h-6 ml-1 mr-3"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/640px-YouTube_full-color_icon_%282017%29.svg.png"
+        alt=""
+      >
+      <p href="#" class="hidden tracking-normal sm:block sm:text-xl md:text-xl text-dark font-semibold">YouTube Clone</p>
+    </div>
+    <form class="flex sm:w-4/12 md:w-5/12 mr-1 items-center">
+      <input type="text" class="px-4 py-2 w-full rounded-l-full h-9 border-2 border-gray-300 focus:outline-none" placeholder="Поиск">
+      <button type="submit" class="flex items-center h-9 bg-gray-100 border-2 border-l-0 hover:bg-gray-200 transition-all border-gray-300 text-gray-700 px-4 py-2 rounded-r-full">
+        <fa-icon [icon]="faMagnifyingGlass"/>
+      </button>
+    </form>
+    <div class="flex items-center position-fixed z-50">
+      <fa-icon class="mr-5 d-none-600" size="xl" [icon]="faCirclePlayRegular"/>
+      <fa-icon class="mr-5 d-none-600" size="xl" [icon]="faBellRegular"/>
+      <img
+        (click)="rightSidebarService.open()"
+        class="w-8 h-8 rounded-full mr-4 cursor-pointer"
+        src="https://yt3.ggpht.com/ytc/APkrFKaEIUl5My4M5Pt522ZQB0BUsVnSR8m5AEFxS2ir6g=s48-c-k-c0x00ffffff-no-rj"
+        alt="">
+    </div>
+  </div>
+</nav>

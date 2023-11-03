@@ -1,0 +1,232 @@
+<div
+  *ngIf="sidebarService.isVisible | async"
+  (click)="sidebarService.close()"
+  class="bg-black/50 fixed top-0 right-0 bottom-0 left-0 z-50"
+></div>
+<div [ngClass]="{'sidebar-open': sidebarService.isVisible | async}"
+     class="d-none w-68 sidebar bg-white p-4 h-full top-0 left-0 transition-all z-10"
+     style="overflow-y: scroll;"
+>
+  <div class="flex ml-2 mr-4 items-center">
+    <button (click)="sidebarService.close()" class="text-black text-2xl">
+      &#9776;
+    </button>
+    <img
+      class="h-6 ml-1 mr-1"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/640px-YouTube_full-color_icon_%282017%29.svg.png"
+      alt=""
+    >
+    <p href="#" class="ml-2 tracking-normal sm:text-xl md:text-xl text-dark font-semibold">YouTube Clone</p>
+  </div>
+  <ul class="py-4">
+    <li
+      class="pl-4 hover:bg-gray-400 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+      <a [routerLink]="['/']">
+        <fa-icon size="lg" [icon]="faHouse"/>
+        <span class="text-dark [margin-left:0.95rem] text-lg">Главная</span>
+      </a>
+    </li>
+  </ul>
+  <hr>
+  <ul class="pb-4">
+    <li class="pl-4 mt-2 text-lg font-semibold cursor-pointer">
+      Вы
+    </li>
+    <ul>
+      <li class="pl-4 mt-2 hover:bg-gray-400 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faUser"/>
+        <span class="text-dark [margin-left:1.2rem] text-lg">Мой канал</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faClockRotateLeft"/>
+        <span class="text-dark [margin-left:1.05rem] text-lg">История</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faYoutube"/>
+        <span class="text-dark [margin-left:0.9rem] text-lg">Ваши видео</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faClock"/>
+        <span class="text-dark [margin-left:1.1rem] text-lg">Смотреть позже</span>
+      </li>
+    </ul>
+    <ul class="transition-all" *ngIf="sidebarService.openSectionsIncludes('you')">
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faThumbsUp"/>
+        <span class="text-dark [margin-left:1.1rem] text-lg">Понравившиеся</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faBars"/>
+        <span class="text-dark ml-5 text-lg">Плейлист 1</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faBars"/>
+        <span class="text-dark ml-5 text-lg">Плейлист 2</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faBars"/>
+        <span class="text-dark ml-5 text-lg">Плейлист 3</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faBars"/>
+        <span class="text-dark ml-5 text-lg">Плейлист 4</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faBars"/>
+        <span class="text-dark ml-5 text-lg">Плейлист 5</span>
+      </li>
+    </ul>
+    <button (click)="sidebarService.toggleSection('you')"
+            class="pl-1.5 my-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer ml-3">
+      <fa-icon
+        *ngIf="sidebarService.openSectionsIncludes('you'); else doesNotIncludes"
+        size="lg"
+        [icon]="faAngleUp"
+      />
+      <ng-template #doesNotIncludes>
+        <fa-icon
+          size="lg"
+          [icon]="faAngleDown"
+        />
+      </ng-template>
+      <span
+        class="text-dark text-lg [margin-left:1.1rem]"
+      >{{ sidebarService.openSectionsIncludes('you') ? 'Свернуть' : 'Развернуть' }}</span>
+    </button>
+    <hr>
+
+    <li class="pl-4 mt-2 text-lg font-semibold cursor-pointer">
+      Подписки
+    </li>
+    <ul>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 1</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 2</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 3</span>
+      </li>
+    </ul>
+    <ul *ngIf="sidebarService.openSectionsIncludes('subscriptions')">
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 4</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 5</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 6</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 7</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 8</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 9</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 10</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 11</span>
+      </li>
+      <li
+        class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer flex items-center mb-1">
+        <img class="w-6 rounded-full mr-1"
+             src="https://yt3.ggpht.com/5xLh2SPjm1X1KnIiHRpDvbWuPoKkNzr11jEXDgkf487EqFH8kQRgpXq-aNmfs4kDrDtMD-fy9A=s88-c-k-c0x00ffffff-no-rj"
+             alt=""/>
+        <span class="text-dark [margin-left:0.6rem] text-lg">Ютубер 12</span>
+      </li>
+    </ul>
+    <button (click)="sidebarService.toggleSection('subscriptions')"
+            class="pl-1.5 my-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer ml-3"
+    >
+      <fa-icon
+        *ngIf="sidebarService.openSectionsIncludes('subscriptions'); else doesNotIncludes"
+        size="lg"
+        [icon]="faAngleUp"
+      />
+      <ng-template #doesNotIncludes>
+        <fa-icon
+          *ngIf="!sidebarService.openSectionsIncludes('subscriptions')"
+          size="lg"
+          [icon]="faAngleDown"
+        />
+      </ng-template>
+      <span
+        class="text-dark text-lg [margin-left:1.1rem]"
+      >{{ sidebarService.openSectionsIncludes('subscriptions') ? 'Свернуть' : 'Развернуть' }}</span>
+    </button>
+    <hr>
+
+    <li class="pl-4 mt-2 text-lg font-semibold cursor-pointer">
+      Навигатор
+    </li>
+    <ul>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faFire"/>
+        <span class="text-dark [margin-left:1.25rem] text-lg">Тренды</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faMusic"/>
+        <span class="text-dark [margin-left:1rem] text-lg">Музыка</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faGamepad"/>
+        <span class="text-dark [margin-left:0.7rem] text-lg">Видеоигры</span>
+      </li>
+      <li class="pl-4 mt-2 hover:bg-gray-500 hover:bg-opacity-10 hover:rounded-lg cursor-pointer">
+        <fa-icon size="lg" [icon]="faTrophy"/>
+        <span class="text-dark [margin-left:0.9rem] text-lg">Спорт</span>
+      </li>
+    </ul>
+  </ul>
+</div>

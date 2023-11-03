@@ -1,0 +1,108 @@
+<div
+  *ngIf="rightSidebarService.isVisible | async"
+  (click)="rightSidebarService.close()"
+  class="bg-black/50 fixed top-0 right-0 bottom-0 left-0 z-50"
+></div>
+<div
+  *ngIf="rightSidebarService.isVisible | async"
+  class="bg-gray-100 fixed right-3 rounded-lg z-50 flex flex-col shadow-2xl"
+>
+  <div class="flex my-1 pl-3 pr-40 pt-2 pb-1">
+    <img
+      class="rounded-full w-10 h-10"
+      src="https://yt3.ggpht.com/ytc/APkrFKaEIUl5My4M5Pt522ZQB0BUsVnSR8m5AEFxS2ir6g=s48-c-k-c0x00ffffff-no-rj"
+      alt=""
+    >
+    <ul class="flex flex-col ml-2 text-lg font-normal">
+      <li>Moonlighter</li>
+      <li class="-mt-1.5 text-sm font-semibold">@Moonlighter</li>
+      <li class="text-blue-700/90 text-sm font-normal mt-1.5">
+        <a href="">Посмотреть канал</a>
+      </li>
+    </ul>
+  </div>
+  <hr class="[height:_0.5px] my-1 bg-gray-200 border-0 dark:bg-gray-700/30"/>
+  <ul class="flex-col py-1">
+    <li
+      (click)="rightSidebarAccountService.open()"
+      class="flex pr-4 justify-between w-full items-center h-10 hover:bg-gray-300/40 cursor-pointer"
+    >
+      <div class="ml-4">
+        <fa-icon size="lg" [icon]="faUsersRectangle"/>
+        <span class="ml-2.5">Сменить аккаунт</span>
+      </div>
+      <fa-icon size="lg" [icon]="faAngleRight"/>
+    </li>
+    <li class="flex pr-4 justify-between w-full items-center h-10 hover:bg-gray-300 cursor-pointer">
+      <div class="ml-4">
+        <fa-icon size="lg" [icon]="faRightFromBracket"/>
+        <span class="ml-3.5">Выйти</span>
+      </div>
+    </li>
+  </ul>
+  <hr class="[height:_0.5px] my-1 bg-gray-200 border-0 dark:bg-gray-700/30"/>
+  <ul class="flex-col py-1">
+    <li class="flex pr-4 justify-between w-full items-center h-10 hover:bg-gray-300 cursor-pointer">
+      <div class="ml-4">
+        <fa-icon size="lg" [icon]="faMicrophoneLines"/>
+        <span class="ml-5">Творческая студия YouTube Clone</span>
+      </div>
+    </li>
+  </ul>
+  <hr class="[height:_0.5px] my-1 bg-gray-200 border-0 dark:bg-gray-700/30"/>
+  <ul class="flex-col py-1">
+    <li
+      (click)="rightSidebarThemeService.open()"
+      class="flex pr-4 justify-between w-full items-center h-10 hover:bg-gray-300 cursor-pointer"
+    >
+      <div class="ml-4">
+        <fa-icon size="lg" [icon]="faMoon"/>
+        <span class="ml-5">Тема: светлая</span>
+      </div>
+      <fa-icon size="lg" [icon]="faAngleRight"/>
+    </li>
+    <li
+      (click)="rightSidebarLanguageService.open()"
+      class="flex pr-4 justify-between w-full items-center h-10 hover:bg-gray-300 cursor-pointer"
+    >
+      <div class="ml-4">
+        <fa-icon size="lg" [icon]="faLanguage"/>
+        <span class="ml-2.5">Язык: Русский</span>
+      </div>
+      <fa-icon size="lg" [icon]="faAngleRight"/>
+    </li>
+    <li
+      (click)="rightSidebarCountryService.open()"
+      class="flex pr-4 justify-between w-full items-center h-10 hover:bg-gray-300 cursor-pointer">
+      <div class="ml-4">
+        <fa-icon size="lg" [icon]="faGlobe"/>
+        <span class="ml-3.5">Страна: Беларусь</span>
+      </div>
+      <fa-icon size="lg" [icon]="faAngleRight"/>
+    </li>
+  </ul>
+  <hr class="[height:_0.5px] my-1 bg-gray-200 border-0 dark:bg-gray-700/30"/>
+  <ul class="flex-col py-1">
+    <li class="flex pr-4 justify-between w-full items-center h-10 hover:bg-gray-300 cursor-pointer">
+      <div class="ml-4">
+        <fa-icon size="lg" [icon]="faGear"/>
+        <span class="ml-3.5">Настройки</span>
+      </div>
+    </li>
+  </ul>
+  <hr class="[height:_0.5px] my-1 bg-gray-200 border-0 dark:bg-gray-700/30"/>
+  <ul class="flex-col pt-1 pb-3">
+    <li class="flex pr-4 justify-between w-full items-center h-10 hover:bg-gray-300 cursor-pointer">
+      <div class="ml-4">
+        <fa-icon size="lg" [icon]="faQuestion"/>
+        <span class="[margin-left:_1.35rem]">Справка</span>
+      </div>
+    </li>
+    <li class="flex pr-4 justify-between w-full items-center h-10 hover:bg-gray-300 cursor-pointer">
+      <div class="ml-4">
+        <fa-icon size="lg" [icon]="faMessage"/>
+        <span class="ml-3.5">Отправить отзыв</span>
+      </div>
+    </li>
+  </ul>
+</div>
