@@ -13,27 +13,38 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Copy .env file
-      run: cp .env.example .env
+      working-directory: api
+      run:  cp .env.example .env
     - name: Modify .env file
+      working-directory: api
       run: |
         sed -i 's/DB_HOST=127.0.0.1/DB_HOST=db/' .env
         sed -i 's/DB_DATABASE=vt/DB_DATABASE=vt_db/' .env
         sed -i 's/DB_PASSWORD=/DB_PASSWORD=root/' .env
     - name: Set up Docker
+      working-directory: api
       run: docker --version
     - name: Build Docker Image
+      working-directory: api
       run: make build
     - name: Execute project
+      working-directory: api
       run: docker exec vt_app bash
     - name: Execute composer install
+      working-directory: api
       run: composer install
     - name: Generate key
+      working-directory: api
       run: php artisan key:generate
     - name: Analyze using PHPStan
+      working-directory: api
       run: ./vendor/bin/phpstan analyse
     - name: Execute tests (Unit and Feature tests)
+      working-directory: api
       run: php artisan test
     - name: Exit from app
+      working-directory: api
       run: exit
     - name: Stop project
+      working-directory: api
       run: make stop
