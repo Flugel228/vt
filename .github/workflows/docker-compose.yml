@@ -12,10 +12,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Change directory
-      run: cd api
     - name: Copy .env file
-      run: cp .env.example .env
+      working-directory: api
+      run:  cp .env.example .env
     - name: Modify .env file
       run: |
         sed -i 's/DB_HOST=127.0.0.1/DB_HOST=db/' .env
