@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+    - name: Change directory
+      run: cd api
     - name: Copy .env file
       run: cp .env.example .env
     - name: Modify .env file
