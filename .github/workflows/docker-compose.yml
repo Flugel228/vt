@@ -30,7 +30,7 @@ jobs:
       run: docker --version
     - name: Build Docker Image
       working-directory: api
-      run: make build
+      run: docker-compose up -d --build
     - name: Execute project
       working-directory: api
       run: docker exec vt_app bash
