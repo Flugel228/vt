@@ -24,6 +24,9 @@ jobs:
             - name: Set up Docker
               working-directory: ./api
               run: docker --version
+            - name: Debug working directory
+              working-directory: ./фзш
+              run: pwd
             - name: Build Docker Image
               working-directory: ./api
               run: docker-compose up -d --build
