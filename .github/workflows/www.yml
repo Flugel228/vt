@@ -15,7 +15,7 @@ jobs:
             - name: Use Node.js 18.12.1
               uses: actions/setup-node@v1
               with:
-                node-version: 18.12.1
+                node-version: 20.9.0
             - name: Install dependencies
               working-directory: ./www
               run: npm install
