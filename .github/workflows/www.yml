@@ -26,4 +26,4 @@ jobs:
               run: ng build
             - name: Test
               working-directory: ./www
-              run: ng test --configuration=ci
+              run: ng test
