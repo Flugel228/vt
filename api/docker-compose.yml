@@ -14,8 +14,8 @@ services:
 
     app:
         build:
-            context: ..
-            dockerfile: _docker/app/Dockerfile
+            context: ./
+            dockerfile: ./_docker/app/Dockerfile
         volumes:
             - ./:/var/www
         container_name: vt_app
