@@ -8,6 +8,10 @@ jobs:
   start-docker-app:
   
     runs-on: ubuntu-20.04
+
+    defaults:
+        run:
+            working-directory: ./app
     
     steps:
     - name: Checkout code
