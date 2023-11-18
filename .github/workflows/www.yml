@@ -19,9 +19,11 @@ jobs:
             - name: Install dependencies
               working-directory: ./www
               run: npm install
+            - name: Install Angular CLI
+              run: RUN npm install -g @angular/cli
             - name: Build
               working-directory: ./www
-              run: npm run build -- --prod
+              run: ng build -- --prod
             - name: Test
               working-directory: ./www
-              run: npm test -- --configuration=ci
+              run: ng test -- --configuration=ci
