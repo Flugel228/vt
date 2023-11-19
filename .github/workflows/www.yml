@@ -1,29 +1,29 @@
 name: Test of the main part of the project
 on:
-  push:
-    branches: ["master", "develop"]
-  pull_request:
-    branches: ["master", "develop"]
+    push:
+        branches: ["master", "develop"]
+    pull_request:
+        branches: ["master", "develop"]
 jobs:
-  start-docker-app:
+    start-docker-app:
 
-    runs-on: ubuntu-20.04
+        runs-on: ubuntu-20.04
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Use Node.js 20.9.0
-        uses: actions/setup-node@v1
-        with:
-          node-version: 20.9.0
-      - name: Install dependencies
-        working-directory: ./www
-        run: npm install
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli
-      - name: Build
-        working-directory: ./www
-        run: ng build
-      - name: Test
-        working-directory: ./www
-        run: ng test --watch=false --browsers=ChromeHeadless
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+            - name: Use Node.js 20.9.0
+              uses: actions/setup-node@v1
+              with:
+                node-version: 20.9.0
+            - name: Install dependencies
+              working-directory: ./www
+              run: npm install
+            - name: Install Angular CLI
+              run: npm install -g @angular/cli
+            - name: Build
+              working-directory: ./www
+              run: ng build
+            - name: Test
+              working-directory: ./www
+              run: ng test --watch=false --browsers=ChromeHeadless
